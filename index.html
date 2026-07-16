@@ -4,9 +4,386 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Fazal Haq - Drupal Portfolio</title>
-  <meta http-equiv="refresh" content="0; url=portfolio.html">
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5a667a;
+      --line: #d9e0ea;
+      --accent: #1769aa;
+      --accent-soft: #eaf4fb;
+      --paper: #ffffff;
+      --bg: #f6f8fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 42px 22px 52px;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 0.8fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px 0 26px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.05;
+      margin: 0 0 10px;
+      letter-spacing: 0;
+    }
+
+    .title {
+      font-size: 19px;
+      color: var(--muted);
+      margin: 0 0 16px;
+      font-weight: 700;
+    }
+
+    .summary {
+      font-size: 16px;
+      margin: 0;
+      max-width: 680px;
+    }
+
+    .contact {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .contact div {
+      margin-bottom: 9px;
+      font-size: 14px;
+    }
+
+    .contact div:last-child {
+      margin-bottom: 0;
+    }
+
+    section {
+      padding: 24px 0 0;
+    }
+
+    h2 {
+      font-size: 19px;
+      margin: 0 0 12px;
+      color: var(--accent);
+      letter-spacing: 0;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .skill-row {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 14px;
+    }
+
+    .skill-row strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .project {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      min-height: 178px;
+    }
+
+    .project h3 {
+      font-size: 17px;
+      margin: 0 0 5px;
+      letter-spacing: 0;
+    }
+
+    .project .url {
+      font-size: 13px;
+      margin-bottom: 9px;
+      overflow-wrap: anywhere;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    .experience {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .experience h3 {
+      margin: 0 0 4px;
+      font-size: 17px;
+    }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        padding: 26px 16px 38px;
+      }
+
+      .hero,
+      .skills,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0.32in;
+      }
+
+      body {
+        background: #ffffff;
+        font-size: 8.2pt;
+        line-height: 1.17;
+      }
+
+      .page {
+        max-width: none;
+        padding: 0;
+      }
+
+      .hero {
+        grid-template-columns: 1.35fr 0.85fr;
+        gap: 12px;
+        padding: 0 0 8px;
+      }
+
+      h1 {
+        font-size: 22pt;
+      }
+
+      .title {
+        font-size: 10.5pt;
+        margin-bottom: 5px;
+      }
+
+      .summary {
+        font-size: 8.3pt;
+      }
+
+      section {
+        padding-top: 8px;
+      }
+
+      h2 {
+        font-size: 10pt;
+        margin-bottom: 4px;
+      }
+
+      .contact,
+      .skill-row,
+      .project,
+      .experience {
+        border-radius: 6px;
+        padding: 6px;
+      }
+
+      .contact div,
+      .skill-row,
+      .meta,
+      li,
+      .project .url,
+      .footer {
+        font-size: 7.4pt;
+      }
+
+      .projects {
+        gap: 6px;
+      }
+
+      .project {
+        min-height: 0;
+      }
+
+      .project h3,
+      .experience h3 {
+        font-size: 9.2pt;
+      }
+
+      li {
+        margin-bottom: 1px;
+      }
+
+      .footer {
+        margin-top: 7px;
+        padding-top: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <p><a href="portfolio.html">Open Fazal Haq Drupal Portfolio</a></p>
+  <main class="page">
+    <header class="hero">
+      <div>
+        <div class="eyebrow">Drupal Portfolio</div>
+        <h1>Fazal Haq</h1>
+        <p class="title">Drupal Full Stack Developer / Team Lead</p>
+        <p class="summary">
+          5+ years of practical Drupal experience in site building, custom theming,
+          module development, Drupal 7 to 11 migration, SEO, performance optimization,
+          API integrations, cPanel hosting support, and team delivery.
+        </p>
+      </div>
+      <div class="contact">
+        <div><strong>Location:</strong> Peshawar, Pakistan</div>
+        <div><strong>Phone / WhatsApp:</strong> 0337-1605998</div>
+        <div><strong>Email:</strong> <a href="mailto:fazalhaq530@gmail.com">fazalhaq530@gmail.com</a></div>
+        <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/fazal-haq-164895272/">linkedin.com/in/fazal-haq-164895272</a></div>
+      </div>
+    </header>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills">
+        <div class="skill-row"><strong>Drupal</strong> Site Building, Custom Theming, Custom Modules, Migrations, Commerce 2, Views, SEO</div>
+        <div class="skill-row"><strong>Frontend</strong> Twig, SCSS, JavaScript, jQuery, responsive design fixes</div>
+        <div class="skill-row"><strong>Tools & Hosting</strong> Git, Drush, Docker, cPanel, backups, database handling, domain/subdomain setup</div>
+        <div class="skill-row"><strong>Integrations</strong> REST/JSON APIs, time API integration, caching, performance optimization</div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Selected Projects</h2>
+      <div class="projects">
+        <article class="project">
+          <h3>Al Hidaaya</h3>
+          <div class="url"><a href="https://www.alhidaaya.com/">www.alhidaaya.com</a></div>
+          <ul>
+            <li>Performed Drupal 7 to Drupal 11 migration.</li>
+            <li>Completed site building and custom theming.</li>
+            <li>Developed a custom module for time API integration based on country and city.</li>
+            <li>Used caching techniques to improve performance.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Fox Bros Pools</h3>
+          <div class="url"><a href="https://foxbrospools.com/">foxbrospools.com</a></div>
+          <ul>
+            <li>Changed the complete theme look.</li>
+            <li>Completed Drupal site building and custom theming work.</li>
+            <li>Implemented SEO improvements.</li>
+            <li>Resolved performance issues.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Global Homeo Expert</h3>
+          <div class="url"><a href="https://globalhomeoexpert.com/">globalhomeoexpert.com</a></div>
+          <ul>
+            <li>Completed Drupal site building work.</li>
+            <li>Implemented custom theming for a content-driven website.</li>
+            <li>Supported structure and presentation improvements.</li>
+          </ul>
+        </article>
+
+        <article class="project">
+          <h3>Cykelcentralen</h3>
+          <div class="url"><a href="https://www.cykelcentralen.dk/">www.cykelcentralen.dk</a></div>
+          <ul>
+            <li>Delivered Drupal design fixes.</li>
+            <li>Configured Views contextual filtering.</li>
+            <li>Improved listing and content display behavior.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experience</h2>
+      <div class="experience">
+        <h3>Drupal Developer / Team Lead - Drupify Pvt Ltd</h3>
+        <div class="meta">2021 - Present | Full Time</div>
+        <ul>
+          <li>Lead Drupal development work, including task planning, team coordination, technical guidance, and delivery quality.</li>
+          <li>Build and maintain Drupal 7, 8, 9, 10, and 11 websites for client and business requirements.</li>
+          <li>Support custom modules, custom themes, migrations, API integrations, SEO, performance fixes, and cPanel hosting tasks.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="footer">
+      Additional Drupal work: drupify.com, qytera.de, deepfest.com, michalkrysta.cz, college.smartwaydemo.com
+    </div>
+  </main>
 </body>
 </html>
